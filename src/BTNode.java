@@ -7,9 +7,10 @@ public class BTNode<T>{
 	private T data;
 	private BTNode<T> left;
 	private BTNode<T> right;
-
+	private int height;
+	
 	/**
-	 * Constructor for the node
+	 * Constructor for the node. Also initialises the height and sets it to 0.
 	 * @param data data to be stored
 	 * @param left left child of current node
 	 * @param right right child of current node
@@ -18,6 +19,7 @@ public class BTNode<T>{
 		this.data = data;
 		this.left = left;
 		this.right = right;
+		height = 0;
 	}
 
 	
@@ -55,6 +57,15 @@ public class BTNode<T>{
 
 
 	/**
+	 * Get the height variable
+	 * @return the height of that particular node 
+	 **/
+	public int getHeight(){
+		return this.height;
+	}
+
+
+	/**
 	 * Retrieve the left child node
 	 * @return the left child node
 	 **/
@@ -66,6 +77,14 @@ public class BTNode<T>{
          **/
 	public BTNode<T> getRight(){return right;}
 
+
+	/**
+	 * Set the height of the node
+	 * @param height to be set
+	 **/
+	public void setHeight(int h){
+		this.height = h;
+	}
 
 }
 
