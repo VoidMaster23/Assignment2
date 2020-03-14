@@ -14,7 +14,7 @@ run:
 	java -cp bin/ LSBSTApp
 
 docs: 
-	javadoc -classpath ${BINDIR} -d docs/ src/*.java
+	javadoc -sourcepath src/*.java -d docs/
 
 cleandocs:
 	rm -r docs/*
