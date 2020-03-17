@@ -10,8 +10,8 @@ import java.util.Scanner;
  * @author Edson Shivuri
  **/
 public class ReadFile{
-	//boolean to store the whether or not the array app called 
-	private  boolean fromArr;
+	//String to store calling class name 
+	private  String calledBy;
 
 	//Array that will be used in the Array app
 	private ScheduleItem[] itemArr;
@@ -19,6 +19,9 @@ public class ReadFile{
 	
 	//BST USed for the BST app
 	private BST<ScheduleItem> itemBST;
+
+	//AVL used for AVL app
+	private AVL<ScheduleItem> itemAVL;
 	
 	/**
 	 *Constructor for a ReadFile object that instantiates the instance vatiables and determines which which add method to use
@@ -27,15 +30,19 @@ public class ReadFile{
 		itemArr = new ScheduleItem[2976];
 		numElements = 0;	
 	
-		itemBST = new BST<ScheduleItem>();	
+		itemBST = new BST<ScheduleItem>();
+
+		itemAVL = new AVL<ScheduleItem>();	
 
 		//determine which class called the read
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 		if(stackTraceElements[2].getClassName().equals("LSArrayApp")){
-                          fromArr = true; 
-                  }else{  
-                          fromArr = false;
-                  }
+                        calledBy = "LSArrayApp"; 
+                  }else if (stackTraceElements[2].getClassName().equals("LSBSTApp")){  
+                        calledBy = "LSBSTApp";
+                  }else{
+		  	calledBy = "LSAVLapp";
+		  }
 
 	
 
@@ -52,7 +59,7 @@ public class ReadFile{
 		if(fileN == null){
 		toRead = new File("res/Load_Shedding_All_Areas_Schedule_and_Map.clean.final.txt");// allows the program to work with this
 		}else{
-			toRead = new File("../res/"+fileN);
+			toRead = new File("res/"+fileN);
 		}
 		//declare the scanner
 		Scanner scanner  = new Scanner(toRead);
@@ -67,13 +74,13 @@ public class ReadFile{
 			ScheduleItem item = new ScheduleItem(key, areas);
 
 			//add the object to the appropriate DS
-			if(fromArr){
+			if(calledBy.equals("LSArrayApp")){
 				arrAdd(item);
 				numElements++;	
-			}else{
-
+			}else if (calledBy.equals("LSBSTApp")){
 				itemBST.insert(item);
-			
+			}else{
+				itemAVL.insert(item);
 			}
 
 		}//while
@@ -115,7 +122,11 @@ public class ReadFile{
 	 **/
 	 public BST<ScheduleItem> getItemsBST(){
 	 	return this.itemBST;
-	 } 
+	 }
+
+	 public AVL<ScheduleItem> getItemsAVL(){
+	 	return this.itemAVL;
+	 }
 
 
 }
