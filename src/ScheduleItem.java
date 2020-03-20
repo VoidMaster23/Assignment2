@@ -82,16 +82,16 @@ private void SortAreas(){
  * Checks equality between two scheduleItem objects
  * @param other Object check the current object against 
  **/
-public boolean equals(Object other){
+public boolean equals(ScheduleItem other){
 if(other == null){
 	return false; // null check
 	
  }else if(this.getClass() != other.getClass()){
  	return false; // type check
  }else{
- // data check	 
- ScheduleItem otherItem = (ScheduleItem) other;
- return (key.equals(otherItem.getKey()) && (areas.equals(otherItem.getAreasAffected())));
+
+ return (key.equals(other.getKey()) && (areas.equals(other.getAreasAffected())));
+
  }
 }
 
@@ -101,9 +101,28 @@ if(other == null){
  *@return 0 if the objects are equal, 1 if this object is greater than the one it is being compared with and -1 if it is smaller 
  **/
 public int compareTo(ScheduleItem otherItem){
- // just need to compare the keys (time) to determine whether an item 
- // this WILL return an exception that must be handled later
-	return this.key.compareTo(otherItem.getKey());
+ // send both of the objects keys to arrays
+	int[] thisArr = new int[3];
+	int[] otherArr = new int[3];
+	
+	String[] temp1 = this.key.split("_");
+	String[] temp2 = otherItem.getKey().split("_");
+
+	//populate the array 
+	for(int i = 0; i < 3; i++){
+		thisArr[i] = Integer.parseInt(temp1[i]);
+		otherArr[i] = Integer.parseInt(temp2[i]);
+		
+	}
+
+	if(thisArr[0] == otherArr[0] && thisArr[1] == otherArr[1] && thisArr[2] == otherArr[2]) return 0;
+	else{
+		if(thisArr[0] < otherArr[0]) return -1; 
+		if(thisArr[0] == otherArr[0] && thisArr[1] < otherArr[1]) return -1;
+		if(thisArr[0] == otherArr[0] && thisArr[1] == otherArr[1] && thisArr[2] < otherArr[2]) return -1;
+	}
+	
+	return 1;
   
  }
 
