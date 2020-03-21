@@ -129,7 +129,7 @@ public class AVL< T extends Comparable<? super T >> extends BT<T>{
 	 * @return node containing the data
 	 **/
 	public BTNode<T> find ( T data ){
-      		findCount++;
+      		
 		if (root == null) 
 			return null;
       		else

@@ -63,13 +63,14 @@ public class LSAVLapp{
 		if(found == null) 
 			System.out.println("Areas not found");
 		else
-			System.out.println(found.getData().toString());
-		System.out.println("Number of insert operations: "+ itemAVL.insertCount);
-		System.out.println("Number of find operations: "+itemAVL.findCount);
+			//System.out.println(found.getData().toString());
+		//System.out.println("Number of insert operations: "+ itemAVL.insertCount);
+		//System.out.println("Number of find operations: "+itemAVL.findCount);
 
 		//Experiment code
-		//System.out.println(itemAVL.findCount);
-		//System.out.println(itemAVL.insCount);
+		System.out.print(itemAVL.findCount);
+		System.out.print(" ");
+		System.out.println(itemAVL.insertCount);
 
 	}
 }

@@ -63,15 +63,17 @@ public class LSBSTApp{
 		if(found == null)
 			System.out.println("Areas not Found");
 		else
-			System.out.println(found.getData().toString());
+			//System.out.println(found.getData().toString());
 
-		System.out.println("Number of insert operations: "+itemBST.insCount);
-		System.out.println("Number of find operations: "+itemBST.finCount);	
-		System.out.println();
+		//System.out.println("Number of insert operations: "+itemBST.insCount);
+		//System.out.println("Number of find operations: "+itemBST.finCount);	
+		//System.out.println();
 
 		//Experiment Code
-		//System.out.print(itemBST.finCount);
-		//System.out.print(itemBST.insCount);	
+		System.out.print(itemBST.finCount);
+		System.out.print(" ");
+		System.out.println(itemBST.insCount);	
+
 	}
 
 

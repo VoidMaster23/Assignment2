@@ -11,7 +11,7 @@ clean:
 	rm ${BINDIR}*.class
 
 run:
-	java -cp bin/ LSAVLapp 8 31 18
+	java -cp bin/ LSAVLapp 1 1 00
 
 docs: 
 	javadoc -sourcepath src/*.java -d docs/
