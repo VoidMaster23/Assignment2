@@ -66,18 +66,18 @@ worstAVLOut = open('out/WorstAVL.txt','w')
 avgAVLOut = open('out/AvgAVL.txt','w')
 
 
-bestBSTOut = open('out/BestAVL.txt','w')
+bestBSTOut = open('out/BestBST.txt','w')
 worstBSTOut = open('out/WorstBST.txt','w')
 avgBSTOut = open('out/AvgBST.txt','w')
 
 for i in range(10):
-	bestAVLOut.write(avlBestArr[i]+", ")
-	worstAVLOut.write(avlWorstArr[i]+", ")
-	avgAVLOut.write(avlAvgArr[i]+", ")
+	bestAVLOut.write(str(avlBestArr[i])+", ")
+	worstAVLOut.write(str(avlWorstArr[i])+", ")
+	avgAVLOut.write(str(avlAvgArr[i])+", ")
 	
-	bestBSTOut.write(bstBestArr[i]+", ")
-	worstBSTOut.write(bstWorstArr[i]+", ")
-	avgBSTOut.write(bstAvgArr[i]+", ")
+	bestBSTOut.write(str(bstBestArr[i])+", ")
+	worstBSTOut.write(str(bstWorstArr[i])+", ")
+	avgBSTOut.write(str(bstAvgArr[i])+", ")
 
 bestAVLOut.close()
 worstAVLOut.close()
