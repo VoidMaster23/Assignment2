@@ -1,3 +1,6 @@
+import java.util.Scanner;
+
+
 /**
  * Class containing all the methods for data handling for the BST solution
  * @author Edson Shivuri
@@ -15,6 +18,7 @@ public class LSBSTApp{
 	 * @param args string array to take in parameters to start the program with
 	 **/
 	public static void main(String[] args){
+		menu();
 		ReadFile readFile = new ReadFile();
 		if(args.length == 4){
                         readFile.read(args[3]);
@@ -74,6 +78,24 @@ public class LSBSTApp{
 		System.out.print(" ");
 		System.out.println(itemBST.insCount);	
 
+	}
+
+
+	/**
+	* Provides a text based options Menu for the user to choose from
+	**/
+	public static void menu(){
+		//get user input
+		Scanner getInput = new Scanner(System.in);
+		System.out.println("Enter '1' for printAllAreas()");
+		System.out.println("Enter '2' for printAreas()");
+		System.out.println("Enter '3' to find the loadshedding information for a particular area");
+		System.out.println("Enter '4' to exit the program");
+		System.out.println();
+		System.out.print("Your choice: ");
+		String response = getInput.next();
+		if(response != null) System.out.println("Success");
+		System.out.print("Your Choice: ");
 	}
 
 
