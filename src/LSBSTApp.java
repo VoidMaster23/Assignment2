@@ -18,8 +18,9 @@ public class LSBSTApp{
 	 * @param args string array to take in parameters to start the program with
 	 **/
 	public static void main(String[] args){
-		menu();
 		ReadFile readFile = new ReadFile();
+		//this code was for the experiment so that different files could be passed in
+		//in the final product this will always just read from the default file
 		if(args.length == 4){
                         readFile.read(args[3]);
                 }else{
@@ -28,14 +29,17 @@ public class LSBSTApp{
 
 		itemBST = readFile.getItemsBST();
 		
+		menu();
+		
+		//code for experimental purposes 
 		//Determine which function to call
-		if(args.length == 0){
-                        printAllAreas();
-                }else if(args.length == 3 || args.length == 4){
-                       printAreas(args[0], args[1], args[2]);
-                }else{
-                        System.out.println("Your input should be of the format xx yy zz ");
-                }
+		//if(args.length == 0){
+                //        printAllAreas();
+                //}else if(args.length == 3 || args.length == 4){
+                //       printAreas(args[0], args[1], args[2]);
+                //}else{
+                //        System.out.println("Your input should be of the format xx yy zz ");
+                //}
 
 	}
 
@@ -67,18 +71,43 @@ public class LSBSTApp{
 		if(found == null)
 			System.out.println("Areas not Found");
 		else
-			//System.out.println(found.getData().toString());
+			System.out.println(found.getData().toString());
 
-		//System.out.println("Number of insert operations: "+itemBST.insCount);
-		//System.out.println("Number of find operations: "+itemBST.finCount);	
-		//System.out.println();
+		System.out.println("Number of insert operations: "+itemBST.insCount);
+		System.out.println("Number of find operations: "+itemBST.finCount);	
+		System.out.println();
 
 		//Experiment Code
-		System.out.print(itemBST.finCount);
-		System.out.print(" ");
-		System.out.println(itemBST.insCount);	
+		//System.out.print(itemBST.finCount);
+		//System.out.print(" ");
+		//System.out.println(itemBST.insCount);	
 
 	}
+
+	/**
+	* Used to get the user input for to call the printAreas() function
+	**/
+	private static void getInfo(){
+	 //temporary scanner that will take in the scheduleInfo
+                Scanner infoScan = new Scanner(System.in);
+ 
+                  // get the load shedding schedule information 
+                System.out.println("Enter the loadshedding stage, e.g 5 ");
+		String stage = infoScan.next();
+		
+	
+		System.out.println("Enter the day of loadshedding, e.g 15 ");
+                String day = infoScan.next();
+
+		System.out.println("Enter the start time of the loadshedding, e.g 00 , for midight.)");
+                String startTime = infoScan.next();
+			
+		  //call the findAreas function 
+		printAreas(stage, day, startTime);
+
+	}
+	
+	
 
 
 	/**
@@ -87,15 +116,51 @@ public class LSBSTApp{
 	public static void menu(){
 		//get user input
 		Scanner getInput = new Scanner(System.in);
-		System.out.println("Enter '1' for printAllAreas()");
-		System.out.println("Enter '2' for printAreas()");
-		System.out.println("Enter '3' to find the loadshedding information for a particular area");
-		System.out.println("Enter '4' to exit the program");
+		//store user choice
+		int choice;
+	
+
+		//repeat until the user decides to exit the program 
+		//get user input
+ 		do{
+		System.out.println("Loadshedding Schedule Utility");
 		System.out.println();
-		System.out.print("Your choice: ");
-		String response = getInput.next();
-		if(response != null) System.out.println("Success");
+		System.out.println("Enter 1 to display the entire loadshedding schedule");
+		System.out.println("Enter 2 to find all the areas to be affected by a a scheduled loadshdding period");
+		System.out.println("Enter 3 to find all scheduled loadshedding times associated with a particular area");
+		System.out.println("Enter 0 to exit the program");
 		System.out.print("Your Choice: ");
+		choice = getInput.nextInt();
+
+		switch(choice){
+		case 1: {
+			printAllAreas();
+			break;
+			}
+
+		case 2: {
+			//call the get input funtion
+			getInfo();
+			break;
+			}
+
+		
+
+		case 0: {
+			//give a nice indication that the program is closing
+			System.out.println("Have a great day!");
+			System.exit(0);
+			}
+
+		// let the user know that they made an invalid choice
+		default: System.out.println("Invalid choice, try again");
+		
+		}
+
+		}while(choice != 0);
+
+		
+
 	}
 
 
