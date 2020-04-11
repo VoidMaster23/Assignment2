@@ -15,6 +15,7 @@ public class LSAVLapp{
 	 * @param args String array to take in the params to start the program with
 	 **/
 	public static void main(String[] args){
+				
 		//create a readFile object
 		ReadFile read = new ReadFile();
 
@@ -23,9 +24,9 @@ public class LSAVLapp{
 		}else{
 			read.read(null);
 		}
-
+		
 		itemAVL = read.getItemsAVL();
-
+		
 		//determine which function to call
 		if (args.length == 0){
 			printAllAreas();

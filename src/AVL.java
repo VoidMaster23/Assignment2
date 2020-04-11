@@ -3,7 +3,7 @@
  * @author Edson Shivuri
  **/
 
-public class AVL< T extends Comparable<? super T >> extends BT<T>{
+public class AVL<T extends Comparable<? super T >> extends BT<T>{
 
 	//instrumentation 
 	public static int insertCount = 0;

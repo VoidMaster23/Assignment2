@@ -64,11 +64,15 @@ public class BT<T>{
 	public void visit(BTNode<T> node){
 	//this checks to see if there is actually something to search for
 	if(SearchItem.toSearch != null){
+
 		String output = node.getData().toString();
 		if(!output.equals("")){
 		System.out.println(output);
 	    	}
+	}else{
+		System.out.println(node.getData().toString());	
 	}
+	
 	}
 
 

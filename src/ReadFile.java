@@ -80,6 +80,7 @@ public class ReadFile{
 			}else if (calledBy.equals("LSBSTApp")){
 				itemBST.insert(item);
 			}else{
+
 				itemAVL.insert(item);
 			}
 
@@ -124,6 +125,10 @@ public class ReadFile{
 	 	return this.itemBST;
 	 }
 
+	/**
+	 * returns the AVL to be used by the LSAVLApp
+	 * @return AVL of SCheduleItem objects
+	 **/
 	 public AVL<ScheduleItem> getItemsAVL(){
 	 	return this.itemAVL;
 	 }

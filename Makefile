@@ -12,10 +12,10 @@ clean:
 	rm ${BINDIR}*.class
 
 run:
-	java -cp bin/ LSBSTApp
+	java -cp bin/ LSAVLapp
 
 docs: 
-	javadoc -sourcepath src/*.java -d docs/
+	javadoc -sourcepath src/* -d docs/
 
 cleandocs:
-	rm -r docs/*
+	rm -r docs/*	
