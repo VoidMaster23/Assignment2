@@ -106,6 +106,29 @@ public class LSBSTApp{
 		printAreas(stage, day, startTime);
 
 	}
+
+	/**
+	* Used to get the user input for which area to search for
+	**/
+	private static void searchArea(){
+	//temporary scanner to take in the area
+		Scanner searchScan = new Scanner(System.in);
+		System.out.println("Enter the area you're looking for information on, eg 15");
+		String area = searchScan.next();
+		SearchItem.toSearch  = area;
+
+		System.out.println("Enter the stage of the loadshedding, e.g 4");
+		String stage = searchScan.next();
+		SearchItem.stage = stage;
+		
+		//Give a heading to the data
+		System.out.println("Stage "+stage+" loadshedding information for area "+area);
+		itemBST.inOrder(); // prints the scheduleItem info
+		//reset the search item
+		SearchItem.toSearch = null;
+		SearchItem.stage = null;
+	}
+
 	
 	
 
@@ -117,7 +140,7 @@ public class LSBSTApp{
 		//get user input
 		Scanner getInput = new Scanner(System.in);
 		//store user choice
-		int choice;
+		String choice;
 	
 
 		//repeat until the user decides to exit the program 
@@ -130,23 +153,29 @@ public class LSBSTApp{
 		System.out.println("Enter 3 to find all scheduled loadshedding times associated with a particular area");
 		System.out.println("Enter 0 to exit the program");
 		System.out.print("Your Choice: ");
-		choice = getInput.nextInt();
+		choice = getInput.next();
 
 		switch(choice){
-		case 1: {
+		case "1": {
 			printAllAreas();
 			break;
 			}
 
-		case 2: {
+		case "2": {
 			//call the get input funtion
 			getInfo();
+			break;
+			}
+		
+		case "3": {
+			//call the area search area function
+			searchArea();
 			break;
 			}
 
 		
 
-		case 0: {
+		case "0": {
 			//give a nice indication that the program is closing
 			System.out.println("Have a great day!");
 			System.exit(0);
@@ -154,10 +183,11 @@ public class LSBSTApp{
 
 		// let the user know that they made an invalid choice
 		default: System.out.println("Invalid choice, try again");
+
 		
 		}
 
-		}while(choice != 0);
+		}while(!choice.equals("0"));
 
 		
 

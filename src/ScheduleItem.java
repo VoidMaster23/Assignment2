@@ -126,11 +126,37 @@ public int compareTo(ScheduleItem otherItem){
   
  }
 
+/**
+* Checks if the searched area exists in the current scheduleItem by making use of the Search class
+*@param toSearch The string to search for
+*@param stage The loadshedding stage 
+*@return The schedule information for the current object or and empty string if there is nothing
+**/
+private String search(String toSearch, String stage){
+//get the value of the item to search for
+	String testKey = CommonMethods.breakKey(this.key);
+	String stageCheck = "Stage: "+stage;
+	
+	if(this.areas.contains(toSearch) && testKey.contains(stageCheck)){
+		return testKey;
+	}
+
+return "";	
+
+}
+
 
 /**
- * toString method for the ScheduleItem class
+ * toString method for the ScheduleItem class. If the user specified a search is needed this will return just the key
  **/
 public String toString(){
+//determine what needs to be outputted
+String toSearch = SearchItem.toSearch;
+String stage = SearchItem.stage;
+if(toSearch != null && stage != null){
+return search(toSearch, stage);
+}
+
 return CommonMethods.breakKey(this.key)+"\n"+"Areas Affected: "+this.areas+"\n";
 
 }

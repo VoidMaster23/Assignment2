@@ -1,3 +1,4 @@
+
 /**
  * Super Class of Binary Trees
  * @author Edson Shivuri
@@ -54,13 +55,20 @@ public class BT<T>{
 		else return 1 + getSize(node.getLeft()) + getSize(node.getRight());
 	}
 
+
 	
 	/**
-	 * Prints out the node data
+	 * Prints out the node data or the search term found in the SearchItem class
 	 *@param node Node to be acted upon
 	 */
 	public void visit(BTNode<T> node){
-	System.out.println(node.getData().toString());
+	//this checks to see if there is actually something to search for
+	if(SearchItem.toSearch != null){
+		String output = node.getData().toString();
+		if(!output.equals("")){
+		System.out.println(output);
+	    	}
+	}
 	}
 
 

@@ -3,6 +3,7 @@ JAVAC=/usr/bin/javac
 
 SRCDIR=src/
 BINDIR=bin/
+ 
 
 all:
 	javac -d bin $(SRCDIR)*.java
