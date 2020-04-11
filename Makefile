@@ -11,11 +11,14 @@ all:
 clean:
 	rm ${BINDIR}*.class
 
-run:
+runAVL:
 	java -cp bin/ LSAVLapp
 
+runBST:
+	java -cp bin/ LSBSTApp	
+
 docs: 
-	javadoc -sourcepath src/* -d docs/
+	javadoc -d docs src/*.java
 
 cleandocs:
 	rm -r docs/*	
