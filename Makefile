@@ -18,7 +18,7 @@ runBST:
 	java -cp bin/ LSBSTApp	
 
 docs: 
-	javadoc -d docs src/*.java
+	javadoc -d docs/ src/*.java
 
 cleandocs:
 	rm -r docs/*	
