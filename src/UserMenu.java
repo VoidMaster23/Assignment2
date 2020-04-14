@@ -38,7 +38,7 @@ public class UserMenu{
 		System.out.println("Enter 3 to find all scheduled loadshedding times associated with a particular area");
 		System.out.println("Enter 0 to exit the program");
 		System.out.print("Your Choice: ");
-		choice = getInput.next();
+		choice = getInput.next().strip();
 
 		switch(choice){
 		case "1": {
@@ -85,11 +85,11 @@ public class UserMenu{
 	//temporary scanner to take in the area
 		Scanner searchScan = new Scanner(System.in);
 		System.out.println("Enter the area you're looking for information on, eg 15");
-		String area = searchScan.next();
+		String area = searchScan.next().strip();
 		SearchItem.toSearch  = area;
 
 		System.out.println("Enter the stage of the loadshedding, e.g 4");
-		String stage = searchScan.next();
+		String stage = searchScan.next().strip();
 		SearchItem.stage = stage;
 		
 		//Give a heading to the data
@@ -115,14 +115,14 @@ public class UserMenu{
  
                   // get the load shedding schedule information 
                 System.out.println("Enter the loadshedding stage, e.g 5 ");
-		String stage = infoScan.next();
+		String stage = infoScan.next().strip();
 		
 	
 		System.out.println("Enter the day of loadshedding, e.g 15 ");
-                String day = infoScan.next();
+                String day = infoScan.next().strip();
 
 		System.out.println("Enter the start time of the loadshedding, e.g 00 , for midight.)");
-                String startTime = infoScan.next();
+                String startTime = infoScan.next().strip();
 			
 		  //call the findAreas function 
               
