@@ -80,7 +80,7 @@ public class BTNode<T>{
 
 	/**
 	 * Set the height of the node
-	 * @param height to be set
+	 * @param h height to be set
 	 **/
 	public void setHeight(int h){
 		this.height = h;

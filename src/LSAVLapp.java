@@ -27,17 +27,19 @@ public class LSAVLapp{
 		
 		itemAVL = read.getItemsAVL();
 
-		UserMenu.menu();
+		UserMenu menu =  new UserMenu();
 		
 		//determine which function to call
 		//note that this might be neccessary if you still want command line args
-		// if (args.length == 0){
-		// 	printAllAreas();
-		// }else if (args.length == 3 || args.length == 4){
-		// 	printAreas(args[0], args[1], args[2]);
-		// }else{
-		// 	System.out.println("Your input should be in the format xx yy zz ");
-		// }
+		 if (args.length == 0){
+		 	menu.printAllAreas();
+		 }else if (args.length == 3 || args.length == 4){
+		 	menu.printAreas(args[0], args[1], args[2]);
+		 }else if (args[0].equals("m")){
+			menu.menu();
+		 }else{
+		 	System.out.println("Invalid Call, try again");
+		 }
 
 
 	}

@@ -29,17 +29,19 @@ public class LSBSTApp{
 
 		itemBST = readFile.getItemsBST();
 		
-		UserMenu.menu();
+		//create UserMenu object to access functionality
+		UserMenu menu = new UserMenu();
 		
-		//code for experimental purposes 
 		//Determine which function to call
-		//if(args.length == 0){
-                //        printAllAreas();
-                //}else if(args.length == 3 || args.length == 4){
-                //       printAreas(args[0], args[1], args[2]);
-                //}else{
-                //        System.out.println("Your input should be of the format xx yy zz ");
-                //}
+		if(args.length == 0){
+                        menu.printAllAreas();
+                }else if(args.length == 3 || args.length == 4){
+                       menu.printAreas(args[0], args[1], args[2]);
+                }else if(args[0].equals("m")){
+			menu.menu();
+		}else{
+                        System.out.println("Invalid Call, please try again ");
+                }
 
 	}
 

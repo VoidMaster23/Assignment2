@@ -30,7 +30,7 @@ public class AVL<T extends Comparable<? super T >> extends BT<T>{
 
 	/**
 	 * Method to adjust the height of the subtree
-	 * @param node subtree "root" node tp adjust the height of
+	 * @param node subtree "root" node to adjust the height of
 	 **/
 	public void fixHeight(BTNode<T> node){
 		node.setHeight(Math.max(height(node.getLeft()),height(node.getRight()))+1);
@@ -41,7 +41,7 @@ public class AVL<T extends Comparable<? super T >> extends BT<T>{
 	 * @param p parent node to which the left child has been added
 	 * @return node that rotated to the position of p
 	 **/
-	public BTNode<T> rotateRight(BTNode<T> p){
+	private BTNode<T> rotateRight(BTNode<T> p){
 		BTNode<T> q = p.getLeft();
 		p.setLeft(q.getRight());
 		q.setRight(p);
@@ -55,7 +55,7 @@ public class AVL<T extends Comparable<? super T >> extends BT<T>{
          * @param p parent node to which the right child has been added
          * @return the node that rotated to the position of p
          **/
-        public BTNode<T> rotateLeft(BTNode<T> p){
+        private BTNode<T> rotateLeft(BTNode<T> p){
                 BTNode<T> q = p.getRight();
                 p.setRight(q.getLeft());
                 q.setLeft(p);
@@ -129,7 +129,9 @@ public class AVL<T extends Comparable<? super T >> extends BT<T>{
 	 * @return node containing the data
 	 **/
 	public BTNode<T> find ( T data ){
-      		
+		//reset the find count
+		findCount = 0;
+		      		
 		if (root == null) 
 			return null;
       		else
@@ -144,7 +146,7 @@ public class AVL<T extends Comparable<? super T >> extends BT<T>{
          * @return node containing the data
          **/
 
-   	public BTNode<T> find ( T data, BTNode<T> node ){
+   	private BTNode<T> find ( T data, BTNode<T> node ){
       		findCount++;
 		if (data.compareTo (node.getData()) == 0){
          		return node;

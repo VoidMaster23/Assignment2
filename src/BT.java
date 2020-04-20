@@ -15,7 +15,8 @@ public class BT<T>{
 	}
 
 	/**
-	 * Recursively find the height of the tree by calling the overloaded {@link #getHeight(BTNode<T> node) getHeight} method
+	 * Recursively find the height of the tree
+	 * @see #getHeight(BTNode<T> node)
 	 * @return the height of the entire tree
 	 **/
 	public int getHeight(){

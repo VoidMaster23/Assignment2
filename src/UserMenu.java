@@ -6,17 +6,12 @@ import java.util.Scanner;
 **/
 public class UserMenu{
 //stores the information of which class called it
-	private static String calledBy;
+	private String calledBy;
 
 	/**
-	* Provides a text based options Menu for the user to choose from
+	* Constructor for the class. It determines which functionality to implement by looking at the stack trace and checking which funcrion called it
 	**/
-	public static void menu(){
-		//get user input
-		Scanner getInput = new Scanner(System.in);
-		//store user choice
-		String choice;
-
+	public UserMenu(){
 		//determine which class called the menu
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 		if(stackTraceElements[2].getClassName().equals("LSBSTApp")){
@@ -24,9 +19,16 @@ public class UserMenu{
                   }else if (stackTraceElements[2].getClassName().equals("LSAVLapp")){  
                         calledBy = "LSAVLapp";
                   }
+	}
 
-
-	
+	/**
+	* Provides a text based options Menu for the user to choose from
+	**/
+	public void menu(){
+		//get user input
+		Scanner getInput = new Scanner(System.in);
+		//store user choice
+		String choice;	
 
 		//repeat until the user decides to exit the program 
 		//get user input
@@ -81,7 +83,7 @@ public class UserMenu{
 	/**
 	* Used to get the user input for which area to search for
 	**/
-	private static void searchArea(){
+	private void searchArea(){
 	//temporary scanner to take in the area
 		Scanner searchScan = new Scanner(System.in);
 		System.out.println("Enter the area you're looking for information on, eg 15");
@@ -109,7 +111,7 @@ public class UserMenu{
 	/**
 	* Used to get the user input for to call the printAreas() function
 	**/
-	private static void getInfo(){
+	private void getInfo(){
 	 //temporary scanner that will take in the scheduleInfo
                 Scanner infoScan = new Scanner(System.in);
  
@@ -135,7 +137,7 @@ public class UserMenu{
 	/**
 	 * Prints loadshedding details
 	 **/
-	private static void printAllAreas(){
+	public void printAllAreas(){
 		// performs a traversal
 
 		if(calledBy.equals("LSAVLapp")){
@@ -151,18 +153,26 @@ public class UserMenu{
 	 * @param day day of loadshedding
 	 * @param startTime starting hour of the loadshedding, e.g 8pm will be 20
 	 **/
-	private static void printAreas(String stage, String day, String startTime){
+	public void printAreas(String stage, String day, String startTime){
 		//build the key
 		String toFind = CommonMethods.makeKey(stage, day, startTime);
 		ScheduleItem temp = new ScheduleItem(toFind, null);
 
 		//find the node
 		BTNode<ScheduleItem> found;
+		
+		//number of operations
+		int insertCount;
+		int findCount;
 
 		 if(calledBy.equals("LSBSTApp")){  
 		 	found = LSBSTApp.itemBST.find(temp);
+			insertCount = LSBSTApp.itemBST.insCount;
+			findCount = LSBSTApp.itemBST.finCount;
 		 }else{
 		 	found = LSAVLapp.itemAVL.find(temp);
+			insertCount = LSAVLapp.itemAVL.insertCount;
+			findCount = LSAVLapp.itemAVL.findCount;
 		 }
 		
 		//return result
@@ -171,8 +181,8 @@ public class UserMenu{
 		else
 			System.out.println(found.getData().toString());
 
-		//System.out.println("Number of insert operations: "+ itemAVL.insertCount);
-		//System.out.println("Number of find operations: "+itemAVL.findCount);
+		System.out.println("Number of insert operations: "+ insertCount);
+		System.out.println("Number of find operations: "+findCount);
 
 		//Experiment code
 		// System.out.print(itemAVL.findCount);

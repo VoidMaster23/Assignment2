@@ -73,11 +73,6 @@ this.areas = areas;
 
 
 
-//sorts the areas
-private void SortAreas(){
-// may not need to Actually be here but add for the sake of good output
-}
-
 /**
  * Checks equality between two scheduleItem objects
  * @param other Object check the current object against 

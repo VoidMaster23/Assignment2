@@ -14,7 +14,6 @@ public class BST<T extends Comparable<? super T>> extends BT<T>{
 	 **/
 	public void insert(T data){
 		
-		insCount++;
 		//if there is no root node, create one
 		if(root == null) root  = new BTNode<T>(data, null, null);
 		//place the data in the tree
@@ -31,12 +30,12 @@ public class BST<T extends Comparable<? super T>> extends BT<T>{
 	private void insert(T data, BTNode<T> node){
 		insCount++;
 		if(data.compareTo(node.getData()) <= 0){
-			insCount++;
 			if(node.getLeft() == null ) 
 				node.setLeft(new BTNode<T>(data,null,null));
 			else 
 				insert(data, node.getLeft());
 		}else{
+		
 			if(node.getRight() == null)
 				node.setRight(new BTNode<T>(data, null, null));
 			else
@@ -53,7 +52,8 @@ public class BST<T extends Comparable<? super T>> extends BT<T>{
 	 * @return Null if the object was not found and the node if it was
 	 **/
 	public BTNode<T> find(T data){
-		
+		//reset the find count
+		finCount = 0;		
 		if(root == null)
 			return null;
 		else 
