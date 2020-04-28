@@ -74,7 +74,7 @@ public class BST<T extends Comparable<? super T>> extends BT<T>{
 		}
 	
 		else{ 
-			finCount++;
+			//finCount++;
 			if(data.compareTo(node.getData()) < 0){
 				return (node.getLeft() == null) ? null : find(data, node.getLeft());
 			}else{

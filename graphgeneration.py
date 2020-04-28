@@ -14,34 +14,44 @@ import matplotlib.pyplot as plt
 from google.colab import files
 uploaded = files.upload()
 
-avgAVL = open('AvgAVL.txt', 'r')
-avgBST = open('AvgBST.txt','r')
+avgAVL = open('AvgAVLNode.txt', 'r')
+avgBST = open('AvgBSTNode.txt','r')
 
-bestAVL = open('BestAVL.txt','r')
-bestBST = open('BestBST.txt','r')
+bestAVL = open('BestAVLNode.txt','r')
+bestBST = open('BestBSTNode.txt','r')
 
-worstAVL = open('WorstAVL.txt','r')
-worstBST = open('WorstBST.txt','r')
+worstAVL = open('WorstAVLNode.txt','r')
+worstBST = open('WorstBSTNode.txt','r')
+
+# worstAVL = worstAVL.readlines()[0].split(", ")
+# worstAVL = worstAVL[:10]
+# worstAVL
 
 #Average case
-avgAVLArr = avgAVL.readlines()[0].rstrip("\n").split(", ")
+avgAVLArr = avgAVL.readlines()[0].split(", ")
+avgAVLArr = avgAVLArr[:10]
 avgAVLArr = [float(valStr) for valStr in avgAVLArr]
 
-avgBSTArr = avgBST.readlines()[0].rstrip("\n").split(", ")
+avgBSTArr = avgBST.readlines()[0].split(", ")
+avgBSTArr = avgBSTArr[:10]
 avgBSTArr = [float(valStr) for valStr in avgBSTArr]
 
 #Best Case
-bestAVLArr = bestAVL.readlines()[0].rstrip("\n").split(", ")
+bestAVLArr = bestAVL.readlines()[0].split(", ")
+bestAVLArr = bestAVLArr[:10]
 bestAVLArr = [int(valStr) for valStr in bestAVLArr]
 
-bestBSTArr = bestBST.readlines()[0].rstrip("\n").split(", ")
+bestBSTArr = bestBST.readlines()[0].split(", ")
+bestBSTArr = bestBSTArr[:10]
 bestBSTArr = [int(valStr) for valStr in bestBSTArr]
 
 #Worst Case
-worstAVLArr = worstAVL.readlines()[0].rstrip("\n").split(", ")
+worstAVLArr = worstAVL.readlines()[0].split(", ")
+worstAVLArr = worstAVLArr[:10]
 worstAVLArr = [int(valStr) for valStr in worstAVLArr]
 
-worstBSTArr = worstBST.readlines()[0].rstrip("\n").split(", ")
+worstBSTArr = worstBST.readlines()[0].split(", ")
+worstBSTArr = worstBSTArr[:10]
 worstBSTArr = [int(valStr) for valStr in worstBSTArr]
 
 print(avgAVLArr)
@@ -66,35 +76,45 @@ worstAVLArr = np.array(worstAVLArr)
 worstBSTArr = np.array(worstBSTArr)
 
 #AVG case Plot
+plt.figure(figsize=(10,6))
+plt.tick_params(labelsize = 16)
 plt.plot(lables, avgAVLArr, "b", label = "AVL")
 plt.plot(lables, avgBSTArr, "r", label = "BST")
 plt.legend(loc="best")
-plt.title("Average Case Graph")
-plt.xlabel("N")
-plt.ylabel("Number of operations")
+plt.title("Average Case Graph", fontsize = 20)
+plt.xlabel("N",fontsize = 18)
+plt.ylabel("Number of operations", fontsize = 18)
+#plt.yscale("log",basey = 2)
+plt.grid()
 #plt.show()
-plt.savefig('average.png')
-files.download('average.png')
+plt.savefig('averageNode.png')
+files.download('averageNode.png')
 
 #Best case Plot
+plt.figure(figsize=(10,6))
+plt.tick_params(labelsize = 16)
 plt.plot(lables, bestAVLArr, "b", label = "AVL")
 plt.plot(lables, bestBSTArr, "r", label = "BST")
 plt.legend(loc="best")
-plt.title("Best Case Graph")
-plt.xlabel("N")
-plt.ylabel("Number of operations")
+plt.title("Best Case Graph", fontsize = 20)
+plt.xlabel("N", fontsize = 18)
+plt.ylabel("Number of operations", fontsize = 18)
+plt.grid()
 #plt.show()
-plt.savefig('best.png')
-files.download('best.png')
+plt.savefig('bestNode.png')
+files.download('bestNode.png')
 
 #Worst case Plot
+plt.figure(figsize=(10,6))
+plt.tick_params(labelsize = 16)
 plt.plot(lables, worstAVLArr, "b", label = "AVL")
 plt.plot(lables, worstBSTArr, "r", label = "BST")
 plt.legend(loc="best")
-plt.title("Worst Case Graph")
-plt.xlabel("N")
-plt.ylabel("Number of operations")
+plt.title("Worst Case Graph", fontsize = 20)
+plt.xlabel("N", fontsize = 18)
+plt.ylabel("Number of operations", fontsize = 18)
+plt.grid()
 #plt.show()
-plt.savefig('worst.png')
-files.download('worst.png')
+plt.savefig('worstNode.png')
+files.download('worstNode.png')
 

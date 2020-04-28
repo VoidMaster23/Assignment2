@@ -182,18 +182,18 @@ public class UserMenu{
 		if(found == null) 
 			System.out.println("Areas not found");
 		else
-			//System.out.println(found.getData().toString());
+			System.out.println(found.getData().toString());
 
-		//System.out.println("Number of insert operations: "+ insertCount);
-		//System.out.println("Number of find operations: "+findCount);
-		//System.out.println("Tree Height: "+height);
+		System.out.println("Number of insert operations: "+ insertCount);
+		System.out.println("Number of find operations: "+findCount);
+		System.out.println("Tree Height: "+height);
 			
 		//Experiment code
-		System.out.print(findCount);
-		System.out.print(" ");
-		System.out.print(insertCount);	
-		System.out.print(" ");
-		System.out.println(height);
+		//System.out.print(findCount);
+		//System.out.print(" ");
+		//System.out.print(insertCount);	
+		//System.out.print(" ");
+		//System.out.println(height);
 		
 
 	}
