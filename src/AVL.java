@@ -150,10 +150,13 @@ public class AVL<T extends Comparable<? super T >> extends BT<T>{
       		findCount++;
 		if (data.compareTo (node.getData()) == 0){
          		return node;
-		}else if (data.compareTo (node.getData()) < 0){
+		}else {
+		findCount++;
+		if (data.compareTo (node.getData()) < 0){
          		return (node.getLeft() == null) ? null : find (data, node.getLeft());
 		}else{
          		return (node.getRight() == null) ? null : find (data, node.getRight());
+		}
 		}
    }
 

@@ -16,6 +16,8 @@ for i in range(10):
 
 	avlFinArr = []
 	bstFinArr = []
+	
+	
 
 	fileN = 'input'+str((i+1))+'.txt'
 	f = open('res/'+fileN,'r')
@@ -30,6 +32,7 @@ for i in range(10):
 		p1 = subprocess.run(['java','-cp', 'bin/', 'LSAVLapp', params[0],params[1], params[2], fileN],capture_output = True, text = True)
 		
 		avlArr = p1.stdout.rstrip("\n").split(" ")
+		print("AVL",avlArr)
 		avlInsArr.append(int(avlArr[1]))
 		avlFinArr.append(int(avlArr[0]))
 		
@@ -38,6 +41,7 @@ for i in range(10):
 		p2 = subprocess.run(['java','-cp', 'bin/', 'LSBSTApp', params[0],params[1], params[2], fileN],capture_output = True, text = True)
 		bstArr = p2.stdout.rstrip("\n").split(" ")
 		bstInsArr.append(int(bstArr[1]))
+		print("BST",bstArr)
 		bstFinArr.append(int(bstArr[0]))
 		
 	avlBestArr.append(min(avlFinArr))
@@ -61,14 +65,14 @@ for i in range(10):
 
 		
 	n+= 297
-bestAVLOut = open('out/BestAVL.txt','w')
-worstAVLOut = open('out/WorstAVL.txt','w')
-avgAVLOut = open('out/AvgAVL.txt','w')
+bestAVLOut = open('out/BestAVLComp.txt','w')
+worstAVLOut = open('out/WorstAVLComp.txt','w')
+avgAVLOut = open('out/AvgAVLComp.txt','w')
 
 
-bestBSTOut = open('out/BestBST.txt','w')
-worstBSTOut = open('out/WorstBST.txt','w')
-avgBSTOut = open('out/AvgBST.txt','w')
+bestBSTOut = open('out/BestBSTComp.txt','w')
+worstBSTOut = open('out/WorstBSTComp.txt','w')
+avgBSTOut = open('out/AvgBSTComp.txt','w')
 
 for i in range(10):
 	bestAVLOut.write(str(avlBestArr[i])+", ")

@@ -164,30 +164,37 @@ public class UserMenu{
 		//number of operations
 		int insertCount;
 		int findCount;
+		int height;
 
 		 if(calledBy.equals("LSBSTApp")){  
 		 	found = LSBSTApp.itemBST.find(temp);
 			insertCount = LSBSTApp.itemBST.insCount;
 			findCount = LSBSTApp.itemBST.finCount;
+			height = LSBSTApp.itemBST.getHeight();
 		 }else{
 		 	found = LSAVLapp.itemAVL.find(temp);
 			insertCount = LSAVLapp.itemAVL.insertCount;
 			findCount = LSAVLapp.itemAVL.findCount;
+			height = LSAVLapp.itemAVL.getHeight();
 		 }
 		
 		//return result
 		if(found == null) 
 			System.out.println("Areas not found");
 		else
-			System.out.println(found.getData().toString());
+			//System.out.println(found.getData().toString());
 
-		System.out.println("Number of insert operations: "+ insertCount);
-		System.out.println("Number of find operations: "+findCount);
-
+		//System.out.println("Number of insert operations: "+ insertCount);
+		//System.out.println("Number of find operations: "+findCount);
+		//System.out.println("Tree Height: "+height);
+			
 		//Experiment code
-		// System.out.print(itemAVL.findCount);
-		// System.out.print(" ");
-		// System.out.println(itemAVL.insertCount);
+		System.out.print(findCount);
+		System.out.print(" ");
+		System.out.print(insertCount);	
+		System.out.print(" ");
+		System.out.println(height);
+		
 
 	}
 
